@@ -186,8 +186,6 @@ function viewRoles() {
         connection.query("INSERT INTO roles SET ?", {title:results.roleTitle, salary:results.roleSalary, department_id:results.choice}, function (err, results) {
         if (err) throw err;
         console.table(results);
-        console.log("Role added to the database!");
-        console.log("-------------------------\n");
         viewRoles();
         });
   })
@@ -217,7 +215,6 @@ function addDepartments() {
         if (err) throw err;
         console.table(results);
         console.log("Department added to the database!");
-        console.log("-------------------------\n");
         viewDepartments();
         });
 })
