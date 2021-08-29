@@ -37,6 +37,10 @@ Use console.table to print MySQL rows to the console: `npm install console.table
 
 Use the MySQL NPM package to connect to your MySQL database: `npm install --save mysql2`.
 
+Use CML tools for artistic logo: `npm install asciiart-logo`.
+
+Use a dotenv npm package to add password privacy: `npm install dotenv`.
+
 ## Usage
 This application is being run on [Heroku](https://notetakervalbona.herokuapp.com/)
 
