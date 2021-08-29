@@ -31,9 +31,11 @@ A screenshot of the deployed app.
 ## Installation
 Run `npm install`. 
 
-Run `npm i express`.
+Use InquirerJs NPM package to interact with the user via the command-line: `npm install inquirer`.
 
-Run `npm i uuid`.
+Use console.table to print MySQL rows to the console: `npm install console.table --save`.
+
+Use the MySQL NPM package to connect to your MySQL database: `npm install --save mysql2`.
 
 ## Usage
 This application is being run on [Heroku](https://notetakervalbona.herokuapp.com/)
@@ -41,12 +43,10 @@ This application is being run on [Heroku](https://notetakervalbona.herokuapp.com
 To run locally, use the command line to navigate to the root of the application and run `node server.js`. 
 
 ## Tech
-- JavaScript
-- HTML
-- CSS (Bootstrap)
-- UUID
-- Express.js
-- Heroku
+- Node.js
+- MySQL
+- NPM
+
 
 ## Contributors
 It is an open project and everyone can contribute. Please email requesting to be added as a contributor.
