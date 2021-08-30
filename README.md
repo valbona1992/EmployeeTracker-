@@ -23,9 +23,9 @@ SO THAT I can organize and plan my business
 ```
 ## Demo Video 
 
-🎥 The full video file showing functionality of the application can be found here: [link](https://drive.google.com/file/d/1paBfaafed2WMutkMsu3ejHpYv2GvrW79/view?usp=sharing) <br/>
+🎥 The full video file showing functionality of the application can be found here: [link](https://drive.google.com/file/d/1BTqh4D5bPp4s7tdBEsWY8_nkeTs9W7cD/view?usp=sharing) <br/>
 
-![Screen Recording](img/previewrecording.gif)
+![Screen Recording](images/demo.gif)
 
 ## Screenshots 
 A screenshot of the terminal using CML. 
