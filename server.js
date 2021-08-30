@@ -43,10 +43,9 @@ function mainPrompt() {
           case "View All Departments":
             viewDepartments();
             break;
-          case "Add Departments":
+          case "Add Department":
             addDepartments();
             break;
-
           default:
             console.log("Goodbye");
             connection.end();
@@ -55,7 +54,7 @@ function mainPrompt() {
   };
 
 function viewEmployees() {
-connection.query("SELECT employees.id, employees.first_name, employees.last_name, roles.title, roles.salary, departments.name AS departments, CONCAT(manager.first_name, ' ', manager.last_name) as Manager FROM employees LEFT JOIN roles on employees.role_id = roles.id LEFT JOIN departments ON roles.department_id= departments.id LEFT JOIN employees manager on manager.id = employees.manager_id;", function (err, results) {
+connection.query("SELECT employees.id, employees.first_name, employees.last_name, roles.title, roles.salary, department.name AS department, CONCAT(manager.first_name, ' ', manager.last_name) as Manager FROM employees LEFT JOIN roles on employees.role_id = roles.id LEFT JOIN department ON roles.department_id= department.id LEFT JOIN employees manager on manager.id = employees.manager_id;", function (err, results) {
     if (err) throw err;
     console.table(results);
     mainPrompt();
@@ -73,6 +72,8 @@ function addEmployees() {
     const managers = data.map(item => {
       return {value:item.id, name:item.first_name, name:item.last_name}
     })
+    managers.unshift("No manager");
+    
     inquirer
     .prompt([
       {
@@ -99,14 +100,16 @@ function addEmployees() {
       },
     ])
     .then(results=> {
-      console.log(results);
+        if (results["manager"] == "No manager"){
+            results["manager"] = null;
+        }
         connection.query("INSERT INTO employees SET ?", {first_name: results.firstName, last_name: results.lastName, role_id:results.role, manager_id:results.manager}, function (err, results) {
         if (err) throw err;
         console.table(results);
         console.log("Employee added to the database!");
         viewEmployees();
         });
-  })
+    })
   })
   })
   };
@@ -135,7 +138,6 @@ function updateRoles() {
           },
         ])
         .then(results => {
-          console.log(results);
           connection.query("UPDATE employees INNER JOIN roles ON employees.role_id = roles.id SET ? WHERE ?", [{title: results.role},{last_name: results.employeeName}], function (err, results) {
           if (err) throw err;
             console.table(results);
@@ -148,15 +150,15 @@ function updateRoles() {
 )};
 
 function viewRoles() {
-    connection.query("SELECT * FROM roles", function (err, results) {
+    connection.query("SELECT roles.id, roles.title, roles.salary, department.name as 'department' FROM roles left join department on department_id = department.id", function (err, results) {
       if (err) throw err;
       console.table(results);
-      startMenu();
+      mainPrompt();
     });
   };
 
   function addRoles() {
-    connection.query("SELECT id, name FROM departments",function (err, data) {
+    connection.query("SELECT id, name FROM department",function (err, data) {
       if (err) throw err;
     const departments = data.map(item => {
       return {value:item.id, name:item.name}
@@ -181,8 +183,6 @@ function viewRoles() {
       },
     ])
     .then(results=> {
-      //When adding department_id, returns a null value?
-      console.log(results)
         connection.query("INSERT INTO roles SET ?", {title:results.roleTitle, salary:results.roleSalary, department_id:results.choice}, function (err, results) {
         if (err) throw err;
         console.table(results);
@@ -193,7 +193,7 @@ function viewRoles() {
   };
 
 function viewDepartments() {
-    connection.query("SELECT * FROM departments", function (err, results) {
+    connection.query("SELECT * FROM department", function (err, results) {
       if (err) throw err;
       console.table(results);
       mainPrompt();
@@ -211,7 +211,7 @@ function addDepartments() {
     ])
     .then(results=> {
         const {department} = results;
-        connection.query("INSERT INTO departments SET ?", {name: department}, function (err, results) {
+        connection.query("INSERT INTO department SET ?", {name: department}, function (err, results) {
         if (err) throw err;
         console.table(results);
         console.log("Department added to the database!");

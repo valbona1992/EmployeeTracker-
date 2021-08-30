@@ -4,10 +4,11 @@ Developers are often tasked with creating interfaces that make it easy for non-d
 ## Table of Contents 
   
   * [User Story](#userstory)
+  * [Demo Video](#demovideo)
   * [Screenshots](#screenshots)
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Tech](#tech)
+  * [Technology](#technology)
   * [License](#license)
   * [Contributors](#contributors)
   * [Tests](#tests)
@@ -20,13 +21,16 @@ AS A business owner
 I WANT to be able to view and manage the departments, roles, and employees in my company
 SO THAT I can organize and plan my business
 ```
+## Demo Video 
+
+🎥 The full video file showing functionality of the application can be found here: [link](https://drive.google.com/file/d/1paBfaafed2WMutkMsu3ejHpYv2GvrW79/view?usp=sharing) <br/>
+
+![Screen Recording](img/previewrecording.gif)
 
 ## Screenshots 
-A little demo of how the app works. 
-![Screen Recording](Assets/notetaker.gif)
-
-A screenshot of the deployed app. 
-<img src="Assets/NoteTaker.png" alt="screenshot" />
+A screenshot of the terminal using CML. 
+<img src="images/terminal1.png" alt="screenshot" />
+<img src="images/terminal2.png" alt="screenshot" />
 
 ## Installation
 Run `npm install`. 
@@ -42,14 +46,13 @@ Use CML tools for artistic logo: `npm install asciiart-logo`.
 Use a dotenv npm package to add password privacy: `npm install dotenv`.
 
 ## Usage
-This application is being run on [Heroku](https://notetakervalbona.herokuapp.com/)
-
 To run locally, use the command line to navigate to the root of the application and run `node server.js`. 
 
-## Tech
+## Technology
 - Node.js
 - MySQL
-- NPM
+- NPM 
+- ENV
 
 
 ## Contributors
